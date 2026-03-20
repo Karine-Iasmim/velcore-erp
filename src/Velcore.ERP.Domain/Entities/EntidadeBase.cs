@@ -10,5 +10,23 @@ namespace Velcore.ERP.Domain.Entities
     {
         public Guid Id { get; protected set; }
         public DateTime DataCriacao { get; protected set; }
+        public bool Ativo { get; private set; }
+
+        protected EntidadeBase()
+        {
+            Id = Guid.NewGuid();
+            DataCriacao = DateTime.UtcNow;
+            Ativo = true;
+        }
+
+        public void Ativar()
+        {
+            Ativo = true;
+        }
+
+        public void Desativar()
+        {
+            Ativo = false;
+        }
     }
 }

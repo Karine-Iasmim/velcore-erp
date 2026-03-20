@@ -15,8 +15,6 @@ namespace Velcore.ERP.Domain.Entities
         public string Sku { get; private set; }
         public decimal Preco { get; private set; }
 
-        public bool Ativo { get; private set; }
-
         protected Produto() { } // EF
 
         public Produto(Guid empresaId, Guid categoriaId, string descricao, string sku, decimal preco)
@@ -33,7 +31,6 @@ namespace Velcore.ERP.Domain.Entities
             Descricao = descricao;
             Sku = sku;
             Preco = preco;
-            Ativo = true;
             DataCriacao = DateTime.UtcNow;
         }
 
@@ -43,11 +40,6 @@ namespace Velcore.ERP.Domain.Entities
                 throw new Exception("Preço inválido");
 
             Preco = preco;
-        }
-
-        public void Desativar()
-        {
-            Ativo = false;
         }
     }
 }
