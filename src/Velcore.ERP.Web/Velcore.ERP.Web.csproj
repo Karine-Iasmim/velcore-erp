@@ -7,16 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Cadastros\**" />
+    <Compile Remove="Pages\**" />
+    <Content Remove="Controllers\Cadastros\**" />
+    <Content Remove="Pages\**" />
+    <EmbeddedResource Remove="Controllers\Cadastros\**" />
+    <EmbeddedResource Remove="Pages\**" />
+    <None Remove="Controllers\Cadastros\**" />
+    <None Remove="Pages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\Acesso\PerfilController.cs" />
+    <Compile Remove="Controllers\Acesso\PermissoesController.cs" />
+    <Compile Remove="Controllers\Acesso\UsuarioController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Velcore.ERP.Application\Velcore.ERP.Application.csproj" />
     <ProjectReference Include="..\Velcore.ERP.Infrastructure\Velcore.ERP.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Extensions\" />
     <Folder Include="Middlewares\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <Folder Include="Views\Shared\partials\" />
   </ItemGroup>
 
 </Project>
