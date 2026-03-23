@@ -1,48 +1,57 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Velcore - Web</title>
+    <title>@ViewData["Title"] - Velcore ERP</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Velcore.ERP.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout/layout.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Velcore - Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="erp-wrapper d-flex">
+        <aside class="erp-sidebar p-3 d-flex flex-column">
+            <div class="mb-4">
+                <a href="/Home/Index" class="erp-brand text-decoration-none">Velcore ERP</a>
+                <div class="erp-subtitle">Painel administrativo</div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+            <nav class="nav flex-column erp-nav">
+                <a class="nav-link" href="/Home/Index">Início</a>
+                <a class="nav-link" href="#">Empresas</a>
+                <a class="nav-link" href="#">Clientes</a>
+                <a class="nav-link" href="#">Categorias</a>
+                <a class="nav-link" href="#">Produtos</a>
+            </nav>
+        </aside>
+
+        <div class="erp-main flex-grow-1 d-flex flex-column">
+            <header class="erp-topbar px-4 py-3 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">@ViewData["Title"]</h5>
+
+               @*  @if (User.Identity is { IsAuthenticated: true })
+                {
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="text-end">
+                            <div class="fw-semibold">@User.Identity.Name</div>
+                        </div>
+
+                        <form asp-controller="Autenticacao" asp-action="Logout" method="post" class="mb-0">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-outline-dark btn-sm">Sair</button>
+                        </form>
+                    </div>
+                } *@
+            </header>
+
+            <main class="erp-content p-4">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Velcore - ERP
-        </div>
-    </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
